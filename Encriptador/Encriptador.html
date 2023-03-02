@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="es"> 
+	
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="Styles/Encriptador.css">
+		<title>Encriptador</title>
+	</head>
+
+	<header>
+		<p>DESENCRIPTADOR ALURA</p>
+	</header>
+
+	<body >
+		
+		<div class="textos">
+			<textarea id="textoEntrada" placeholder=" Ingrese aquí el mensaje"  ></textarea>	
+			<textarea readonly id="textoSalida"></textarea>
+		</div>
+
+		<div id="rectanguloSalida"></div>
+
+		
+		<div class="botones">	
+			<input type="submit" onclick="encriptar()" value="Encriptar" id="encriptar">
+			<input type="submit" onclick="desencriptar()" value="Desencriptar" id="desencriptar"> 
+			<input type="submit" onclick="copiarTexto()"value="Copiar" id="copiador"> 
+		</div>	
+
+	</body>
+
+<script>
+
+	function encriptar()
+	{
+		var texto = document.getElementById("textoEntrada").value;
+		var a;
+		a = texto.replace(/e/g, "enter");  /* La g es para que busque todas las coincidencias, sin ella solo reemplaza la primera*/
+		a = a.replace(/i/g, "imes")
+		a = a.replace(/a/g, "ai")
+		a = a.replace(/o/g, "ober")
+		a = a.replace(/u/g, "ufat")
+		document.getElementById("textoSalida").value = a;
+	}
+
+	function desencriptar()
+	{
+		var texto = document.getElementById("textoEntrada").value;
+		var a;
+		a = texto.replace(/ufat/g, "u");  /* La g es para que busque todas las coincidencias, sin ella solo reemplaza la primera*/
+		a = a.replace(/ober/g, "o")
+		a = a.replace(/ai/g, "a")
+		a = a.replace(/imes/g, "i")
+		a = a.replace(/enter/g, "e")
+		document.getElementById("textoSalida").value = a;
+	}
+
+	function copiarTexto(){
+		var texto = document.getElementById("textoSalida").value;
+		navigator.clipboard.writeText(texto)
+	}
+
+</script>
+	
+</html>
